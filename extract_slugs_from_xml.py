@@ -21,9 +21,6 @@ def extract_slugs(xml_file):
 
     return list(slugs)
 
-    return list(slugs)
-
-
 if __name__ == "__main__":
     file_path = "liquors.xml"  # change this if needed
 
@@ -33,3 +30,12 @@ if __name__ == "__main__":
 
     for slug in slugs[:20]:  # preview first 20
         print(slug)
+
+    import csv
+
+    with open("slugs.csv", "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(["slug"])  # header
+
+        for slug in slugs:
+            writer.writerow([slug])
